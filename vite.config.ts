@@ -10,13 +10,14 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['fs', 'path', 'os', 'events', 'child_process'],
+      // 这里的排除非常重要，防止 Vite 把 Node 原生代码打进包里
+      external: ['fs', 'path', 'os', 'events', 'child_process', 'crypto', 'http', 'https'],
       output: {
         minifyInternalExports: false,
       },
     },
     outDir: 'dist',
     emptyOutDir: true,
-    minify: false,
+    minify: false, // 暂时关掉压缩，报错时能看到具体哪一行
   },
 });
