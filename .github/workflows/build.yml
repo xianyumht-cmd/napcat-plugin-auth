@@ -1,0 +1,29 @@
+name: Build Plugin
+
+on:
+  push:
+    branches: [ "main" ]  # 只要你往 main 分支提交代码，它就自动运行
+
+jobs:
+  build-and-pack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检查代码
+        uses: actions/checkout@v4
+      
+      - name: 安装 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: 安装打包依赖
+        run: npm install
+        
+      - name: 执行 Vite 构建
+        run: npm run build
+        
+      - name: 导出成品文件
+        uses: actions/upload-artifact@v4
+        with:
+          name: napcat-plugin-dist
+          path: dist/
