@@ -2,10 +2,6 @@
   "name": "napcat-plugin-auth",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "build": "vite build"
-  },
-  "devDependencies": {
-    "vite": "^5.0.0"
-  }
+  "scripts": { "build": "vite build" },
+  "devDependencies": { "vite": "^5.0.0" }
 }
